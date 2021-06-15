@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from "react-native";
 
 import Colors from "../constants/colors";
 
-const { primary } = Colors;
+const { primary, secondary, tertiary, fourth, fifth } = Colors;
 
 const NumberContainer = (props) => {
   return (
@@ -15,12 +15,14 @@ const NumberContainer = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
+    padding: 15,
     borderRadius: 10,
-    marginVertical: 18,
+    marginVertical: 30,
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: primary,
+    borderColor: "black",
+    borderWidth: 1,
   },
   number: {
     color: "white",

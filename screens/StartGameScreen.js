@@ -12,6 +12,8 @@ import Card from "../components/Card";
 import Input from "../components/Input";
 import Colors from "../constants/colors";
 import NumberContainer from "../components/NumberContainer";
+import BodyText from "../components/BodyText";
+import CustomButton from "../components/CustomButton";
 
 const StartGameScreen = (props) => {
   const [enteredValue, setEnteredValue] = useState("");
@@ -20,6 +22,7 @@ const StartGameScreen = (props) => {
 
   const numberInputHandler = (inputText) => {
     setEnteredValue(inputText.replace(/[^0-9]/g, ""));
+    console.log("Entered value: " + enteredValue);
   };
 
   const resetInputHandler = () => {
@@ -40,7 +43,8 @@ const StartGameScreen = (props) => {
     setConfirmed(true);
     setEnteredValue("");
     setSelectedNumber(chosenNumber);
-    console.log(chosenNumber);
+    console.log("Selected numbeer: " + selectedNumber);
+
     Keyboard.dismiss();
   };
 
@@ -48,9 +52,11 @@ const StartGameScreen = (props) => {
   if (confirmed) {
     confirmedOutput = (
       <Card style={styles.summaryContainer}>
-        <Text>You selected</Text>
+        <BodyText style={styles.selectedTitle}>You selected</BodyText>
         <NumberContainer>{selectedNumber}</NumberContainer>
-        <Button color={Colors.tertiary} title="START GAME" />
+        <CustomButton onPress={() => props.onStartGame(selectedNumber)}>
+          START GAME
+        </CustomButton>
       </Card>
     );
   }
@@ -58,13 +64,14 @@ const StartGameScreen = (props) => {
   return (
     <TouchableWithoutFeedback
       onPress={() => {
+        console.log("You touched outside the screen....");
         Keyboard.dismiss();
       }}
     >
       <View style={styles.screen}>
         <Text style={styles.title}>Start a New Game!</Text>
         <Card style={styles.inputContainer}>
-          <Text>Select a Number</Text>
+          <Text style={styles.titleTwo}>Select a Number</Text>
           <Input
             style={styles.input}
             autoCorrect={false}
@@ -104,19 +111,29 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   title: {
+    fontSize: 45,
+    marginVertical: 12,
+    fontFamily: "kung-fu",
+  },
+  titleTwo: {
+    fontFamily: "open-sans",
     fontSize: 20,
-    marginVertical: 10,
+  },
+  selectedTitle: {
+    fontSize: 28,
   },
   inputContainer: {
     width: 300,
     maxWidth: "80%",
     alignItems: "center",
+    padding: 20,
   },
   buttonContainer: {
     flexDirection: "row",
     width: "100%",
     justifyContent: "space-between",
     paddingHorizontal: 15,
+    marginVertical: 15,
   },
   button: {
     width: 100,
@@ -126,9 +143,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   summaryContainer: {
-    marginTop: 20,
     alignItems: "center",
-    padding: 18,
+    padding: 12,
   },
 });
 
