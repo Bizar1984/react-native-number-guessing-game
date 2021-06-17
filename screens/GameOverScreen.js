@@ -36,7 +36,7 @@ const GameOverScreen = (props) => {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    justifyContent: "center",
+    padding: 10,
     alignItems: "center",
   },
   buttonContainer: {
@@ -44,15 +44,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: 300,
     maxWidth: "80%",
-    marginTop: 15,
+    marginTop: 12,
   },
   textContainer: {
-    marginVertical: 12,
+    marginVertical: 8,
   },
   image: {
     width: "80%",
     height: 300,
-    marginVertical: 20,
+    marginVertical: 14,
     borderColor: Colors.secondary,
     borderWidth: 2,
   },

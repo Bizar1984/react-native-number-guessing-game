@@ -22,7 +22,6 @@ const StartGameScreen = (props) => {
 
   const numberInputHandler = (inputText) => {
     setEnteredValue(inputText.replace(/[^0-9]/g, ""));
-    console.log("Entered value: " + enteredValue);
   };
 
   const resetInputHandler = () => {
@@ -32,10 +31,10 @@ const StartGameScreen = (props) => {
 
   const confirmInputHandler = () => {
     const chosenNumber = parseInt(enteredValue);
-    if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
+    if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 999999) {
       Alert.alert(
         "Invalid number!",
-        "Number has to be a number between 1 and 99...",
+        "Number has to be a number between 1 and 999999...",
         [{ text: "Okay", style: "destructive", onPress: resetInputHandler }]
       );
       return;
@@ -43,7 +42,6 @@ const StartGameScreen = (props) => {
     setConfirmed(true);
     setEnteredValue("");
     setSelectedNumber(chosenNumber);
-    console.log("Selected numbeer: " + selectedNumber);
 
     Keyboard.dismiss();
   };
@@ -64,7 +62,6 @@ const StartGameScreen = (props) => {
   return (
     <TouchableWithoutFeedback
       onPress={() => {
-        console.log("You touched outside the screen....");
         Keyboard.dismiss();
       }}
     >
@@ -76,7 +73,7 @@ const StartGameScreen = (props) => {
             style={styles.input}
             autoCorrect={false}
             keyboardType="number-pad"
-            maxLength={2}
+            maxLength={6}
             onChangeText={numberInputHandler}
             value={enteredValue}
           />
@@ -126,7 +123,7 @@ const styles = StyleSheet.create({
     width: 300,
     maxWidth: "80%",
     alignItems: "center",
-    padding: 20,
+    padding: 18,
   },
   buttonContainer: {
     flexDirection: "row",
@@ -144,7 +141,6 @@ const styles = StyleSheet.create({
   },
   summaryContainer: {
     alignItems: "center",
-    padding: 12,
   },
 });
 

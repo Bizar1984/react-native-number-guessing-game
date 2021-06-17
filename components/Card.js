@@ -12,7 +12,7 @@ const Card = (props) => {
 const styles = StyleSheet.create({
   card: {
     backgroundColor: "white",
-    padding: 20,
+    padding: 4,
     borderRadius: 20,
   },
 });
