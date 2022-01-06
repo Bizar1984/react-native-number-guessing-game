@@ -1,2 +1,3 @@
 # react-native-number-guessing-game
-# code comes from a Udemy course
+<p>code comes from a Udemy course, only added binary search to guess faster  </p>
+
